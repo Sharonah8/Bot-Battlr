@@ -3,7 +3,7 @@ import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
 
 function BotsPage() {
-  const [bot, setBot] = useState([])
+  const [bots, setBots] = useState([])
   useEffect(() => {
     addBot()
   }, [])
@@ -11,17 +11,23 @@ function BotsPage() {
     try {
       const res = await fetch('http://localhost:8002/bots')
       const data = await res.json()
-      setBot(data)
+      setBots(data)
 
     } catch (error) {
       console.log(error)
     }
   }
-  console.log("My data ==>", bot)
+
+  const handleClick = event => {
+    console.log(event.target.value);
+    console.log('Image clicked');
+  };
+
+  console.log("My data ==>", bots)
   return (
     <div>
-      <YourBotArmy />
-      <BotCollection bot={bot} />
+      <YourBotArmy bots={bots} />
+      <BotCollection bots={bots} onClick={handleClick} />
     </div>
   )
 }
