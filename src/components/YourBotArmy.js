@@ -9,6 +9,8 @@ function YourBotArmy() {
         <div className="row bot-army-row">
           {/*...and here...*/}
           Your Bot Army
+
+          {/* {bot && bot.map((bot) => <img src={bot}></img>)} */}
         </div>
       </div>
     </div>
