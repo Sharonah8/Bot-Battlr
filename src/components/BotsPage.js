@@ -32,19 +32,22 @@ function BotsPage() {
     setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: false } : bot))
   }
 
-
-  //refactored
-  function clickedBot(id, isClicked = true) {
-    setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: isClicked} : bot))
+  function deleteBot(id) {
+    setBots(bots.filter(bot => id !== bot.id))
   }
 
-  <YourBotArmy bots={bots.filter(bot => bot.isClicked)} handleClick={(id) => isClicked(id, false)} />
+  // //refactored
+  // function clickedBot(id, isClicked = true) {
+  //   setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: isClicked} : bot))
+  // }
+
+  // <YourBotArmy bots={bots.filter(bot => bot.isClicked)} handleClick={(id) => isClicked(id, false)} />
 
 
   // console.log("My data ==>", bots)
   return (
     <div>
-      <YourBotArmy bots={bots.filter(bot => bot.isClicked)} handleClick={unClickedBot} />
+      <YourBotArmy bots={bots.filter(bot => bot.isClicked)} handleClick={unClickedBot} handleDelete={deleteBot} />
       <BotCollection bots={bots} handleClick={clickedBot} />
     </div>
   )
