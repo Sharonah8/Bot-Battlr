@@ -18,16 +18,22 @@ function BotsPage() {
     }
   }
 
-  const handleClick = event => {
-    console.log(event.target.value);
-    console.log('Image clicked');
-  };
+  // const handleClick = event => {
+  //   console.log(event.target.value);
+  //   console.log('Image clicked');
+  // };
+
+
+  function clickedBot(id) {
+    setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: true } : bot))
+  }
+
 
   console.log("My data ==>", bots)
   return (
     <div>
-      <YourBotArmy bots={bots} />
-      <BotCollection bots={bots} onClick={handleClick} />
+      <YourBotArmy bots={bots.filter(bot => bot.isClicked)} />
+      <BotCollection bots={bots} handleClick={clickedBot} />
     </div>
   )
 }
