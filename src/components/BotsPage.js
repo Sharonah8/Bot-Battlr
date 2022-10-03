@@ -28,11 +28,16 @@ function BotsPage() {
     setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: true } : bot))
   }
 
+  function unClickedBot(id) {
+    setBots(bots.map(bot => id === bot.id ? { ...bot, isClicked: false } : bot))
+  }
 
-  console.log("My data ==>", bots)
+
+
+  // console.log("My data ==>", bots)
   return (
     <div>
-      <YourBotArmy bots={bots.filter(bot => bot.isClicked)} />
+      <YourBotArmy bots={bots.filter(bot => bot.isClicked)} handleClick={unClickedBot} />
       <BotCollection bots={bots} handleClick={clickedBot} />
     </div>
   )
